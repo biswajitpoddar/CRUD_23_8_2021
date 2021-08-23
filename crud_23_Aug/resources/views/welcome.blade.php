@@ -20,22 +20,32 @@
 
     <div class="container">
         <h1>Ajax Data Insert</h1>
-        <form action="" class="btn-submit" method="POST">
+
+        {{-- @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif --}}
+        <form action=""  method="POST">
 
            <div class="form-group">
                 <label>Title:</label>
-                <input type="text" name="title" class="form-control" placeholder="title" required="">
+                <input type="text" name="title" class="form-control" placeholder="title" required>
 
             </div>
 
             <div class="form-group">
                 <label>Details:</label>
-                <input type="text" name="details" class="form-control" placeholder="details" required="">
+                <input type="text" name="details" class="form-control" placeholder="details" required>
             </div>
 
 
             <div class="form-group">
-                <button class="btn btn-success">Submit</button>
+                <button class="btn btn-success btn-submit">Submit</button>
             </div>
 
         </form>
@@ -69,8 +79,7 @@
            success:function(response){
               if(response.success){
                   swal("Done",response.message,"success"); //Message come from controller
-                  $("input[name=title]").val()="";
-                  $("input[name=details]").val()="";
+                
               }
            },
            error:function(error){
@@ -78,6 +87,9 @@
              
            }
         });
+        //alert("here");
+        $("input[name=title]").val("");
+        $("input[name=details]").val("");
 	});
 
 </script>
